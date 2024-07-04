@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Categoría</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Categoría - Eliminar</h1>
+        <a href="buscarCategoria" class="btn btn-secondary mb-3">Retornar a la búsqueda de categorías</a>
+        <hr>
+        <form method="post" action="eliminarCategoria">
+            <table class="table table-bordered">
+                <tr>
+                    <td><label for="txtId">CÓDIGO</label></td>
+                    <td><input type="text" id="txtId" class="form-control" name="txtId" th:value="${categoria.id_categoria}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="txtNombre">NOMBRE</label></td>
+                    <td><input type="text" id="txtNombre" class="form-control" name="txtNombre" th:value="${categoria.nombre}" disabled></td>
+                </tr>
+                <tr>
+                    <td><a href="buscarCategoria" class="btn btn-secondary">Retornar</a></td>
+                    <td><input type="submit" class="btn btn-danger" value="Eliminar"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

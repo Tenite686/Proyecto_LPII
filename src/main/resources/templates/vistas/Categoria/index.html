@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Categorías</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Categorías</h1>
+        <a href="agregarCategoria" class="btn btn-primary mb-3">Agregar nueva categoría</a>
+        <a href="." class="btn btn-secondary mb-3">Retornar</a>
+        <hr>
+        
+        <form method="post" action="buscarCategoria" class="form-inline mb-3">
+            <label class="mr-2">Nombre:</label>
+            <input type="text" class="form-control mr-2" name="txtNombreBuscar" th:value="${nombreBuscado}" size="50" required>
+            <input type="submit" class="btn btn-primary" value="Buscar">
+        </form>
+        
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col" colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${listaCategorias}">
+                    <td th:text="${categoria.id_categoria}"></td>
+                    <td th:text="${categoria.nombre}"></td>
+                    <td><a class="btn btn-info btn-sm" th:href="${'editarCategoria?cod='+categoria.id_categoria}">Editar</a></td>
+                    <td><a class="btn btn-danger btn-sm" th:href="${'eliminarCategoria?cod='+categoria.id_categoria}">Eliminar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

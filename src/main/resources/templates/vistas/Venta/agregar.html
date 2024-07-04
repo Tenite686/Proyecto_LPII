@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nueva Venta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Venta - Agregar</h1>
+    <hr>
+    <form method="post" action="agregarVenta">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="buscarVenta" class="btn btn-danger mb-3">Regresar</a>
+                <div class="form-group">
+                    <label for="cmbProducto">PRODUCTO</label>
+                    <select class="form-control" id="cmbProducto" name="id_producto">
+                        <option th:each="producto : ${productos}" th:value="${producto.id_producto}" th:text="${producto.descripcion}"></option>
+                    </select>
+                </div>
+				<div class="form-group">
+				    <label for="cmbCliente">CLIENTE</label>
+				    <select class="form-control" id="cmbCliente" name="id_cliente">
+				        <option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}" th:text="${cliente.nombre}"></option>
+				    </select>
+				</div>
+                <div class="form-group">
+                    <label for="txtFecha">FECHA</label>
+                    <input type="date" class="form-control" id="txtFecha" name="fecha" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Venta</button>
+    </form>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:if="${exito}">
+    $(document).ready(function() {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Venta registrada exitosamente!',
+            showConfirmButton: true,
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nuevo Producto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Producto - Agregar</h1>
+    <hr>
+    <form method="post" action="agregarProducto">
+        <div class="row">
+            <div class="col-md-6">
+				<a href="buscarProducto" class="btn btn-danger mb-3">Regresar</a>
+                <div class="form-group">
+                    <label for="txtCodigo">CÓDIGO INVENTARIO</label>
+                    <input type="text" class="form-control" id="txtCodigo" name="codigo" required>
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">DESCRIPCIÓN</label>
+                    <input type="text" class="form-control" id="txtDescripcion" name="descripcion" required>
+                </div>
+                <div class="form-group">
+                    <label for="txtPrecio">PRECIO</label>
+                    <input type="text" class="form-control" id="txtPrecio" name="precio" required>
+                </div>
+                <div class="form-group">
+                    <label for="txtStock">STOCK</label>
+                    <input type="text" class="form-control" id="txtStock" name="stock" required>
+                </div>
+                <div class="form-group">
+                    <label for="cmbCategoria">CATEGORÍA</label>
+                    <select class="form-control" id="cmbCategoria" name="categoria">
+                        <option th:each="categoria : ${categorias}" th:value="${categoria.id_categoria}" th:text="${categoria.nombre}"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script th:if="${exito}">
+	    jQuery(document).ready(function() {
+	        Swal.fire({
+	            icon: 'success',
+	            title: '¡Producto registrado exitosamente!',
+	            showConfirmButton: true,
+	        });
+			
+	    });
+	</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nuevos Clientes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS para estilos personalizados -->
+    <style>
+        /* Estilos para la barra de navegación */
+        .navbar {
+            background-color: #007bff; /* Color azul */
+        }
+
+        .navbar-brand {
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+        }
+
+        .nav-item .nav-link {
+            color: #fff !important; /* Texto blanco */
+        }
+
+        .dropdown-menu {
+            background-color: #007bff; /* Fondo azul */
+        }
+
+        .dropdown-item {
+            color: #fff !important; /* Texto blanco */
+        }
+
+        .dropdown-item:hover {
+            background-color: #0056b3; /* Color de fondo al pasar el mouse */
+        }
+
+        /* Estilos generales */
+        body {
+            padding-top: 60px; /* Ajuste para la barra de navegación fija */
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Registros
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                    <a class="dropdown-item" href="agregarCliente">Cliente</a> <!-- llamar al servlet -->
+                    <a class="dropdown-item" href="#">Venta</a>
+                    <a class="dropdown-item" href="Categoria/RegistroCategoria.html">Categoría</a>
+                    <a class="dropdown-item" href="Producto/RegistroProducto.html">Producto</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    CRUD
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
+                    <a class="dropdown-item" href="VentaCRUD.jsp">Venta</a>
+                    <a class="dropdown-item" href="CategoriaCRUD.jsp">Categoría</a>
+                    <a class="dropdown-item" href="ProductoCRUD.jsp">Producto</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Consulta y Reporte 
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    <a class="dropdown-item" href="#">Cliente</a>
+                    <a class="dropdown-item" href="#">Venta</a>
+                    <a class="dropdown-item" href="#">Categoría</a>
+                    <a class="dropdown-item" href="#">Producto</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                    <a class="dropdown-item" href="#">Cliente</a>
+                    <a class="dropdown-item" href="#">Venta</a>
+                    <a class="dropdown-item" href="#">Categoría</a>
+                    <a class="dropdown-item" href="#">Producto</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Salir</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="container">
+    <h1 class="mt-5">Cliente - Agregar</h1>
+    <hr>
+    <form method="post" action="agregarCliente">
+        <div class="row">
+            <div class="col-md-6">
+				<div class="form-group d-none">
+				    <label for="txtId">CODIGO</label>
+				    <input type="text" class="form-control" id="txtId" name="txtId" th:value="${cliente.id_cliente}" readonly>
+				</div>
+                <div class="form-group">
+                    <label for="txtNombre">NOMBRE</label>
+                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" th:value="${cliente.nombre}">
+                </div>
+                <div class="form-group">
+                    <label for="txtNum_ruc">NUMERO RUC</label>
+                    <input type="text" class="form-control" id="txtNum_ruc" name="txtNum_ruc" th:value="${cliente.num_ruc}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="txtDireccion">DIRECCION</label>
+                    <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" th:value="${cliente.direccion}">
+                </div>
+                <div class="form-group">
+                    <label for="txtTelefono">TELEFONO</label>
+                    <input type="text" class="form-control" id="txtTelefono" name="txtTelefono" th:value="${cliente.telefono}">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

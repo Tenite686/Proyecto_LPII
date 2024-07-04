@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Producto</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Producto - Editar</h1>
+        <a href="buscarProducto" class="btn btn-danger mb-3">Regresar</a>
+        <hr>
+        <form method="post" action="editarProducto">
+            <table class="table table-bordered">
+                <tr>
+                    <td><label for="txtId">CÓDIGO</label></td>
+                    <td><input type="text" id="txtId" class="form-control" name="id" th:value="${producto.id_producto}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="txtCodigo">CÓDIGO INVENTARIO</label></td>
+                    <td><input type="text" id="txtCodigo" class="form-control" name="codigo" th:value="${producto.codigo_inventario}"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtDescripcion">DESCRIPCIÓN</label></td>
+                    <td><input type="text" id="txtDescripcion" class="form-control" name="descripcion" th:value="${producto.descripcion}"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtPrecio">PRECIO</label></td>
+                    <td><input type="text" id="txtPrecio" class="form-control" name="precio" th:value="${producto.precio}"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtStock">STOCK</label></td>
+                    <td><input type="text" id="txtStock" class="form-control" name="stock" th:value="${producto.stock}"></td>
+                </tr>
+                <tr>
+                    <td><label for="cmbCategoria">CATEGORÍA</label></td>
+                    <td>
+                        <select class="form-control" id="cmbCategoria" name="categoria">
+                            <option th:each="categoria : ${categorias}"
+                                    th:value="${categoria.id_categoria}"
+                                    th:text="${categoria.Nombre}"
+                                    th:attr="selected=${categoria.id_categoria == producto.categoria.id_categoria}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" class="btn btn-primary" value="Guardar"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script th:if="${exito}">
+	    jQuery(document).ready(function() {
+	        Swal.fire({
+	            icon: 'success',
+	            title: '¡Producto editado exitosamente!',
+	            showConfirmButton: true,
+	        });
+			
+	    });
+	</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

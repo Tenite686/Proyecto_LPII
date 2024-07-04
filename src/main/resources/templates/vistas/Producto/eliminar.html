@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Cliente</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilo adicional si es necesario */
+        body {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		/* Estilos para la barra de navegación */
+		        .navbar {
+		            background-color: #007bff; /* Color azul */
+		        }
+
+		        .navbar-brand {
+		            color: #fff; /* Texto blanco */
+		            font-weight: bold;
+		        }
+
+		        .nav-item .nav-link {
+		            color: #fff !important; /* Texto blanco */
+		        }
+
+		        .dropdown-menu {
+		            background-color: #007bff; /* Fondo azul */
+		        }
+
+		        .dropdown-item {
+		            color: #fff !important; /* Texto blanco */
+		        }
+
+		        .dropdown-item:hover {
+		            background-color: #0056b3; /* Color de fondo al pasar el mouse */
+		        }
+
+		        /* Estilos generales */
+		        body {
+		            padding-top: 60px; /* Ajuste para la barra de navegación fija */
+		        }
+    </style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+	       <a class="navbar-brand" href="#">Home</a>
+	       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	           <span class="navbar-toggler-icon"></span>
+	       </button>
+	       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	           <ul class="navbar-nav">
+	               <li class="nav-item dropdown">
+	                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                       Registros
+	                   </a>
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+	                       <a class="dropdown-item" href="agregarCliente">Cliente</a> <!-- llamar al servlet -->
+	                       <a class="dropdown-item" href="#">Venta</a>
+	                       <a class="dropdown-item" href="Categoria/RegistroCategoria.html">Categoría</a>
+	                       <a class="dropdown-item" href="Producto/RegistroProducto.html">Producto</a>
+	                   </div>
+	               </li>
+	               <li class="nav-item dropdown">
+	                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                       CRUD
+	                   </a>
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+	                       <a class="dropdown-item" href="buscarCliente">Cliente</a>
+	                       <a class="dropdown-item" href="VentaCRUD.jsp">Venta</a>
+	                       <a class="dropdown-item" href="CategoriaCRUD.jsp">Categoría</a>
+	                       <a class="dropdown-item" href="ProductoCRUD.jsp">Producto</a>
+	                   </div>
+	               </li>
+	               <li class="nav-item dropdown">
+	                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                       Consulta y Reporte 
+	                   </a>
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+	                       <a class="dropdown-item" href="#">Cliente</a>
+	                       <a class="dropdown-item" href="#">Venta</a>
+	                       <a class="dropdown-item" href="#">Categoría</a>
+	                       <a class="dropdown-item" href="#">Producto</a>
+	                   </div>
+	               </li>
+	               <li class="nav-item dropdown">
+	                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                       
+	                   </a>
+	                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+	                       <a class="dropdown-item" href="#">Cliente</a>
+	                       <a class="dropdown-item" href="#">Venta</a>
+	                       <a class="dropdown-item" href="#">Categoría</a>
+	                       <a class="dropdown-item" href="#">Producto</a>
+	                   </div>
+	               </li>
+	               <li class="nav-item">
+	                   <a class="nav-link" href="#">Salir</a>
+	               </li>
+	           </ul>
+	       </div>
+	   </nav>
+    <div class="container">
+        <h1 class="mt-4">Cliente - Eliminar</h1>
+        <a href="buscarCliente" class="btn btn-secondary mb-3">Retornar a la búsqueda de clientes</a>
+        <hr>
+        <form method="post" action="eliminarCliente">
+            <table class="table table-bordered">
+                <tr>
+                    <td><label for="txtId">CODIGO</label></td>
+                    <td><input type="text" id="txtId" class="form-control" name="txtId" th:value="${cliente.ID_Cliente}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="txtNombre">NOMBRE</label></td>
+                    <td><input type="text" id="txtNombre" class="form-control" name="txtNombre" th:value="${cliente.nombre}" disabled></td>
+                </tr>
+                <tr>
+                    <td><label for="txtNum_ruc">NUMERO RUC</label></td>
+                    <td><input type="text" id="txtNum_ruc" class="form-control" name="txtNum_ruc" th:value="${cliente.num_ruc}" disabled></td>
+                </tr>
+                <tr>
+                    <td><label for="txtDireccion">DIRECCION</label></td>
+                    <td><input type="text" id="txtDireccion" class="form-control" name="txtDireccion" th:value="${cliente.direccion}" disabled></td>
+                </tr>
+                <tr>
+                    <td><label for="txtTelefono">TELEFONO</label></td>
+                    <td><input type="text" id="txtTelefono" class="form-control" name="txtTelefono" th:value="${cliente.telefono}" disabled></td>
+                </tr>
+                <tr>
+                    <td><a href="buscarCliente" class="btn btn-secondary">Retornar</a></td>
+                    <td><input type="submit" class="btn btn-danger" value="Eliminar"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+	<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</body>
+	</html>

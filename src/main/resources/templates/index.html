@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href=".">Menú Principal</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+					<li class="nav-item d-flex align-items-center">
+					    <a class="nav-link mr-3" th:href="@{/buscarProducto}">Gestionar Producto</a>
+					    <a class="nav-link" th:href="@{/buscarCliente}">Gestionar Cliente</a>
+						<a class="nav-link" th:href="@{/buscarCategoria}">Gestionar Categoria</a>
+						<a class="nav-link" th:href="@{/buscarVenta}">Gestionar Venta</a>
+
+
+					</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main class="container mt-4">
+        <h1 class="text-center">Bienvenido a la Gestión de Productos</h1>
+        <p class="text-center">Utilice el menú para navegar a las diferentes secciones de la aplicación.</p>
+    </main>
+    
+    <!-- Enlace a Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

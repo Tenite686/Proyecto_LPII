@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Ventas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Ventas</h1>
+        <a href="agregarVenta" class="btn btn-primary mb-3">Agregar nueva venta</a>
+        <a href="." class="btn btn-danger mb-3">Regresar</a>
+
+        <hr>
+        
+        <!-- Formulario de búsqueda -->
+        <form method="post" action="buscarVenta">
+            <div class="form-group row">
+                <label for="filtro" class="col-sm-2 col-form-label">Filtrar por:</label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="filtro" name="filtro">
+                        <option value="cliente" th:selected="${filtro == 'cliente'}">Cliente</option>
+                        <option value="producto" th:selected="${filtro == 'producto'}">Producto</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="txtBuscar" name="txtBuscar" th:value="${terminoBuscado}" placeholder="Ingrese término de búsqueda" required>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </form>
+        
+        <!-- Tabla de ventas -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Venta</th>
+                    <th>Producto</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteración sobre la lista de ventas -->
+                <tr th:each="venta : ${listaVentas}">
+                    <td th:text="${venta.getId_venta()}"></td>
+                    <td th:text="${venta.getProducto().getDescripcion()}"></td>
+                    <td th:text="${venta.getCliente().getNombre()}"></td>
+                    <td th:text="${#dates.format(venta.getFecha(), 'dd/MM/yyyy HH:mm')}"></td>
+                    <td><a th:href="${'editarVenta?id='+venta.getId_venta()}">Editar</a></td>
+                    <td><a th:href="${'eliminarVenta?id='+venta.getId_venta()}">Eliminar</a></td>
+                </tr>
+                <!-- Mensaje si no se encontraron ventas -->
+                <tr th:if="${#lists.isEmpty(listaVentas)}">
+                    <td colspan="5" class="text-center">No se encontraron ventas</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
