@@ -42,64 +42,52 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="#">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Registros
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                    <a class="dropdown-item" href="agregarCliente">Cliente</a> <!-- llamar al servlet -->
-                    <a class="dropdown-item" href="#">Venta</a>
-                    <a class="dropdown-item" href="Categoria/RegistroCategoria.html">Categoría</a>
-                    <a class="dropdown-item" href="Producto/RegistroProducto.html">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    CRUD
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
-                    <a class="dropdown-item" href="VentaCRUD.jsp">Venta</a>
-                    <a class="dropdown-item" href="CategoriaCRUD.jsp">Categoría</a>
-                    <a class="dropdown-item" href="ProductoCRUD.jsp">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Consulta y Reporte 
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                    <a class="dropdown-item" href="#">Cliente</a>
-                    <a class="dropdown-item" href="#">Venta</a>
-                    <a class="dropdown-item" href="#">Categoría</a>
-                    <a class="dropdown-item" href="#">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
-                    <a class="dropdown-item" href="#">Cliente</a>
-                    <a class="dropdown-item" href="#">Venta</a>
-                    <a class="dropdown-item" href="#">Categoría</a>
-                    <a class="dropdown-item" href="#">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Salir</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+		<a class="navbar-brand" href=".">Home</a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	        <ul class="navbar-nav">
+	            <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                    Registros
+	                </a>
+	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+	                    <a class="dropdown-item" href="agregarCliente">Cliente</a>
+	                    <a class="dropdown-item" href="agregarVenta">Venta</a>
+	                    <a class="dropdown-item" href="agregarCategoria">Categoría</a>
+	                    <a class="dropdown-item" href="agregarProducto">Producto</a>
+	                </div>
+	            </li>
+	            <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                    CRUD
+	                </a>
+	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+	                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
+	                    <a class="dropdown-item" href="buscarVenta">Venta</a>
+	                    <a class="dropdown-item" href="buscarCategoria">Categoría</a>
+	                    <a class="dropdown-item" href="buscarProducto">Producto</a>
+	                </div>
+	            </li>
+	            <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                    Consulta y Reporte 
+	                </a>
+	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+	                    <a class="dropdown-item" href="#">Cliente</a>
+	                    <a class="dropdown-item" href="#">Venta</a>
+	                    <a class="dropdown-item" href="#">Categoría</a>
+	                    <a class="dropdown-item" href="#">Producto</a>
+	                </div>
+	            </li>
+	            <li class="nav-item">
+	                <a class="nav-link" href="#">Salir</a>
+	            </li>
+	        </ul>
+	    </div>
+	</nav>
 <!-- Contenido principal -->
 <div class="container">
     <h1 class="mt-5">Cliente - Agregar</h1>
@@ -137,6 +125,17 @@
 
 <!-- jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:if="${exito}">
+    $(document).ready(function() {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Cliente registrada exitosamente!',
+            showConfirmButton: true,
+        });
+    });
+</script>
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

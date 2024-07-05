@@ -1,0 +1,92 @@
+-- Crear la base de datos LP2-Final si no existe
+CREATE DATABASE IF NOT EXISTS LP2Final;
+
+-- Seleccionar la base de datos LP2-Final
+USE LP2Final;
+
+-- Tabla CLIENTE
+CREATE TABLE CLIENTE (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    num_ruc VARCHAR(20),
+    direccion VARCHAR(255),
+    telefono VARCHAR(20)
+);
+
+-- Tabla CATEGORIA
+CREATE TABLE CATEGORIA (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255)
+);
+
+-- Tabla PRODUCTO
+CREATE TABLE PRODUCTO (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_inventario VARCHAR(50),
+    descripcion VARCHAR(255),
+    id_categoria INT,
+    precio DECIMAL(10, 2),
+    stock INT,
+    FOREIGN KEY (id_categoria) REFERENCES CATEGORIA(id_categoria)
+);
+
+-- Tabla VENTA
+CREATE TABLE VENTA (
+    id_venta INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    id_cliente INT,
+    fecha DATETIME,
+    FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto),
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id_cliente)
+);
+
+-- Tabla DETALLE
+CREATE TABLE DETALLE (
+    id_venta INT,
+    id_producto INT,
+    precioUnitario DECIMAL(10, 2),
+    cantidad INT,
+    FOREIGN KEY (id_venta) REFERENCES VENTA(id_venta),
+    FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto),
+    PRIMARY KEY (id_venta, id_producto)
+);
+
+-- Tabla USUARIO
+CREATE TABLE USUARIO (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_usuario VARCHAR(50) NOT NULL,
+    contraseña VARCHAR(255) NOT NULL
+);
+
+-- Inserción de datos en la tabla CLIENTE
+INSERT INTO CLIENTE (nombre, num_ruc, direccion, telefono) VALUES
+('Cliente A', '12345678901', 'Av. Principal 123', '987654321'),
+('Cliente B', '98765432109', 'Calle Secundaria 456', '123456789');
+
+-- Inserción de datos en la tabla CATEGORIA
+INSERT INTO CATEGORIA (id_categoria, nombre) VALUES
+(1, 'Electrónicos'),
+(2, 'Ropa'),
+(3, 'Hogar');
+
+-- Inserción de datos en la tabla PRODUCTO
+INSERT INTO PRODUCTO (codigo_inventario, descripcion, id_categoria, precio, stock) VALUES
+('PROD001', 'Televisor LED 50 pulgadas', 1, 799.99, 10),
+('PROD002', 'Camiseta manga corta blanca', 2, 19.99, 50),
+('PROD003', 'Silla ergonómica', 3, 129.99, 20);
+
+-- Inserción de datos en la tabla VENTA
+INSERT INTO VENTA (id_cliente, id_producto, fecha) VALUES
+(1, 2, '2024-07-03 10:00:00'),
+(2, 3, '2024-07-03 11:30:00');
+
+-- Inserción de datos en la tabla DETALLE
+INSERT INTO DETALLE (id_venta, id_producto, precioUnitario, cantidad) VALUES
+(1, 1, 799.99, 1),
+(1, 2, 19.99, 2),
+(2, 3, 129.99, 4);
+
+-- Inserción de datos en la tabla USUARIO
+INSERT INTO USUARIO (nombre_usuario, contraseña) VALUES
+('user1', 'password1'),
+('user2', 'password2');

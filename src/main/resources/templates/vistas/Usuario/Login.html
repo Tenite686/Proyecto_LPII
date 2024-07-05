@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+        }
+        .login-form {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        .login-form h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .login-form .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+        .login-form .form-control {
+            border-radius: 4px;
+            box-shadow: none;
+            border-color: #ddd;
+        }
+        .login-form .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .login-form .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .login-form .text-muted {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="login-form">
+                    <h1>Iniciar Sesión</h1>
+                    <form th:action="@{/validar-credenciales}" method="post">
+                        <div class="form-group">
+                            <label for="nombre_usuario">Nombre de Usuario:</label>
+                            <input type="text" id="nombre_usuario" name="nombre_usuario" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" id="contraseña" name="contraseña" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        <div th:if="${error}" class="mt-3">
+                            <p th:text="${error}" class="text-danger"></p>
+                        </div>
+                    </form>
+                    <div class="text-right mt-3">
+                        <a th:href="@{/registro}" class="text-muted">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
