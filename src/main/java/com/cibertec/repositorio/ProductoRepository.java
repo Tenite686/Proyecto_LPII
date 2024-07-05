@@ -37,7 +37,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Query("SELECT MAX(p.id_producto) FROM Producto p WHERE p.descripcion = :descripcion")
     Integer nuevoId(String descripcion);
 
-    @Query("SELECT p FROM Producto p WHERE p.descripcion LIKE %:descripcion%")
+    @Query("SELECT p FROM Producto p WHERE p.descripcion LIKE :descripcion%")
     public List<Producto> buscarPorDescripcion(String descripcion);
     @Query("SELECT p FROM Producto p WHERE p.categoria = :categoria")
     List<Producto> buscarPorCategoria(Categoria categoria);

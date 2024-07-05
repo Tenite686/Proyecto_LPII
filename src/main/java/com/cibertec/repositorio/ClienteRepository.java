@@ -31,8 +31,15 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     @Query("SELECT MAX(c.id_cliente) FROM Cliente c WHERE c.nombre = :nombre")
     Integer nuevoId(String nombre);
 
-    @Query("SELECT c FROM Cliente c WHERE c.nombre LIKE %:nombre%")
+
+    @Query("SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre%")
     List<Cliente> buscarPorNombre(String nombre);
+
+    @Query("SELECT c FROM Cliente c WHERE c.num_ruc LIKE :num_ruc%")
+    List<Cliente> buscarPorNumRuc(String num_ruc);
+
+    @Query("SELECT c FROM Cliente c WHERE c.direccion LIKE :direccion%")
+    List<Cliente> buscarPorDireccion(String direccion);
 
     @Query("SELECT c FROM Cliente c WHERE c.id_cliente = :id")
     Cliente buscarPorId(Integer id);

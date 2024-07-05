@@ -32,6 +32,8 @@ public class ClienteEditar {
         clienteRepository.actualizar(id, nombre, num_ruc, direccion, telefono);
         Cliente cliente = new Cliente(id, nombre, num_ruc, direccion, telefono);
         modelo.addAttribute("cliente", cliente);
+        modelo.addAttribute("exito", true);
+
         return "vistas/Cliente/editar";
     }
 }

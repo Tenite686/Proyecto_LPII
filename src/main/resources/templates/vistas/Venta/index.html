@@ -90,11 +90,12 @@
 
 <!-- Contenido principal -->
     <div class="container">
-        <h1 class="mt-4">Ventas</h1>
-        <a href="agregarVenta" class="btn btn-primary mb-3">Agregar nueva venta</a>
-        <a href="." class="btn btn-danger mb-3">Regresar</a>
-
-        <hr>
+		<h1 class="mt-4">Ventas</h1>
+		<div class="mb-3">
+		    <a href="agregarVenta" class="btn btn-primary">Agregar nueva venta</a>
+		    <a href="/index" class="btn btn-danger ml-2">Regresar</a>
+		</div>
+		<hr>
         
         <!-- Formulario de búsqueda -->
         <form method="post" action="buscarVenta">
@@ -107,7 +108,7 @@
                     </select>
                 </div>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="txtBuscar" name="txtBuscar" th:value="${terminoBuscado}" placeholder="Ingrese término de búsqueda" required>
+                    <input type="text" class="form-control" id="txtBuscar" name="txtBuscar" th:value="${terminoBuscado}" required>
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-primary">Buscar</button>
@@ -119,7 +120,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID Venta</th>
+                    <th>Código</th>
                     <th>Producto</th>
                     <th>Cliente</th>
                     <th>Fecha</th>
@@ -133,7 +134,6 @@
                     <td th:text="${venta.getProducto().getDescripcion()}"></td>
                     <td th:text="${venta.getCliente().getNombre()}"></td>
                     <td th:text="${#dates.format(venta.getFecha(), 'dd/MM/yyyy HH:mm')}"></td>
-                    <td><a th:href="${'editarVenta?id='+venta.getId_venta()}">Editar</a></td>
                     <td><a th:href="${'eliminarVenta?id='+venta.getId_venta()}">Eliminar</a></td>
                 </tr>
                 <!-- Mensaje si no se encontraron ventas -->

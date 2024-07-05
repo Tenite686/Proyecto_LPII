@@ -33,6 +33,7 @@ public class ClienteAgregar {
         // Obtener el nuevo ID del cliente agregado
         Integer nuevoId = clienteRepository.nuevoId(nombre);
         Cliente cliente = new Cliente(nuevoId, nombre, num_ruc, direccion, telefono);
+        modelo.addAttribute("exito", true); // Agregar el atributo "exito" con valor true al modelo
         modelo.addAttribute("cliente", cliente);
         return "vistas/Cliente/agregar"; // Ruta sin la extensión del archivo
     }

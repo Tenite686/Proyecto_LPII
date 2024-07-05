@@ -29,6 +29,8 @@ public class CategoriaEditar {
         categoriaRepository.actualizar(id, nombre);
         Categoria categoria = new Categoria(id, nombre);
         modelo.addAttribute("categoria", categoria);
+        modelo.addAttribute("exito", true);
+
         return "vistas/Categoria/editar";
     }
 }

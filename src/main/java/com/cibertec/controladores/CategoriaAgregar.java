@@ -32,6 +32,8 @@ public class CategoriaAgregar {
         categoriaRepository.save(nuevaCategoria); // Guardar la nueva categoría en la base de datos
 
         modelo.addAttribute("categoria", nuevaCategoria);
+        modelo.addAttribute("exito", true); // Agregar el atributo "exito" con valor true al modelo
+
         return "vistas/Categoria/agregar"; // Ruta sin la extensión del archivo
     }
 }

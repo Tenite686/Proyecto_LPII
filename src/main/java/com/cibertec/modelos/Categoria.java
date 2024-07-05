@@ -1,15 +1,21 @@
 package com.cibertec.modelos;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 @Entity
 public class Categoria {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private int id_categoria;
 	    private String nombre;
+	    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+	    private List<Producto> productos;
 
 	  public Categoria () {
 		  
@@ -19,6 +25,7 @@ public class Categoria {
 		this.id_categoria = id_categoria;
 		this.nombre = nombre;
 	}
+	
 
 	public int getId_categoria() {
 		return id_categoria;
