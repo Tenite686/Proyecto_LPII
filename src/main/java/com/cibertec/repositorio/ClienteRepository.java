@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     @Modifying
     @Query(value = "INSERT INTO CLIENTE (nombre, num_ruc, direccion, telefono) VALUES (:nombre, :num_ruc, :direccion, :telefono)", nativeQuery = true)
     void agregar(String nombre, String num_ruc, String direccion, String telefono);
+    
 
     @Transactional
     @Modifying
@@ -48,5 +50,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     List<String> listarTodosLosNombres();
     
     Cliente findByNombre(String nombre);
+    
+    @Query("SELECT COUNT(v) > 0 FROM Venta v WHERE v.cliente.id = :id")
+    boolean existsVentasByClienteId(@Param("id") int id);
 
 }

@@ -132,7 +132,7 @@
             <td th:text="${cliente.getDireccion()}"></td>
             <td th:text="${cliente.getTelefono()}"></td>
             <td><a class="btn btn-info btn-sm" th:href="${'editarCliente?cod='+cliente.id_cliente}">Editar</a></td>
-            <td><a class="btn btn-danger btn-sm" th:href="${'eliminarCliente?cod='+cliente.id_cliente}">Eliminar</a></td>
+            <td><a class="btn btn-danger btn-sm" th:href="${'eliminarCliente?id='+cliente.id_cliente}">Eliminar</a></td>
         </tr>
         </tbody>
     </table>

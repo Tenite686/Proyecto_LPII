@@ -96,6 +96,10 @@
         <form method="post" action="agregarCliente">
             <div class="row">
                 <div class="col-md-6">
+					<div class="form-group d-none">
+									    <label for="txtId">CÓDIGO</label>
+									    <input type="text" class="form-control" id="txtId" name="txtId" th:value="${cliente.id_cliente}" readonly>
+					</div>
                     <div class="form-group">
                         <label for="txtNombre">NOMBRE</label>
                         <input type="text" class="form-control" id="txtNombre" name="txtNombre" th:value="${cliente.nombre}" required>
@@ -129,8 +133,7 @@
             Swal.fire({
                 icon: 'success',
                 title: '¡Cliente registrado exitosamente!',
-                showConfirmButton: false,
-                timer: 1500
+                showConfirmButton: true,
             });
         });
     </script>
