@@ -10,4 +10,9 @@ public class HomeController {
     public String index() {
         return "vistas/Usuario/Login"; // Ruta relativa al archivo HTML sin extensión
     }
+    @GetMapping("/index")
+    public String indexPage() {
+        return "index"; // Nombre de tu vista index.html
+    }
+    
 }

@@ -51,4 +51,5 @@ public interface VentaRepository extends JpaRepository<Venta, Integer> {
     
     @Query("SELECT v.fecha FROM Venta v")
     List<Date> listarTodasLasFechas();
+
 }
