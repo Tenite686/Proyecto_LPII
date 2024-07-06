@@ -32,12 +32,12 @@ public class ClienteConsultar {
                 num_ruc + "%",
                 telefono + "%");
 
-        // Agregar los resultados y los parámetros de búsqueda al modelo
         model.addAttribute("clientes", clientes);
-        model.addAttribute("nombre", nombre); // Mantener el valor de nombre en la vista
-        model.addAttribute("direccion", direccion); // Mantener el valor de direccion en la vista
-        model.addAttribute("num_ruc", num_ruc); // Mantener el valor de num_ruc en la vista
-        model.addAttribute("telefono", telefono); // Mantener el valor de telefono en la vista
+        model.addAttribute("nombre", nombre); 
+        model.addAttribute("direccion", direccion);
+        model.addAttribute("num_ruc", num_ruc); 
+        model.addAttribute("telefono", telefono);
         return "vistas/cliente/consultar";
     }
+    
 }
