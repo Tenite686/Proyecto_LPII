@@ -55,13 +55,14 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     boolean existsVentasByClienteId(@Param("id") int id);
     
     @Query("select c from Cliente c where "
-            + " c.nombre like :nombre% and "
-            + " c.num_ruc like :num_ruc% and "
-            + " c.direccion like :direccion% and "
-            + " c.telefono like :telefono% ")
+            + " c.nombre like CONCAT(:nombre, '%') and "
+            + " c.num_ruc like CONCAT(:num_ruc, '%') and "
+            + " c.direccion like CONCAT(:direccion, '%') and "
+            + " c.telefono like CONCAT(:telefono, '%')")
     List<Cliente> listaCompleja(@Param("nombre") String nombre,
                                 @Param("direccion") String direccion,
                                 @Param("num_ruc") String num_ruc,
                                 @Param("telefono") String telefono);
+
 
 }
