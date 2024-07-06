@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>Editar Categoría</title>
 	<!-- Bootstrap CSS -->
-	    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- SweetAlert -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 	    <!-- Custom CSS para estilos personalizados -->
 	    <style>
@@ -82,7 +85,7 @@
 	                </div>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link" href="#">Salir</a>
+					<a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
 	            </li>
 	        </ul>
 	    </div>
@@ -109,6 +112,7 @@
             </table>
         </form>
     </div>
+	</body>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<!-- jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -121,9 +125,27 @@
 	        });
 			
 	    });
+	</script>	<script>
+		function confirmarSalir() {
+			Swal.fire({
+				title: '¿Estás seguro?',
+				text: "¿Deseas salir de la sesión?",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Sí, salir',
+				cancelButtonText: 'Cancelar'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// Aquí redirige a la página de cierre de sesión o realiza la acción correspondiente
+					window.location.href = 'iniciar-sesion'; // Redirige a la página de inicio de sesión
+				}
+			});
+		}
 	</script>
 	<!-- jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+
 </html>
