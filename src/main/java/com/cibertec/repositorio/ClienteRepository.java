@@ -53,5 +53,15 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     
     @Query("SELECT COUNT(v) > 0 FROM Venta v WHERE v.cliente.id = :id")
     boolean existsVentasByClienteId(@Param("id") int id);
+    
+    @Query("select c from Cliente c where "
+            + " c.nombre like :nombre% and "
+            + " c.num_ruc like :num_ruc% and "
+            + " c.direccion like :direccion% and "
+            + " c.telefono like :telefono% ")
+    List<Cliente> listaCompleja(@Param("nombre") String nombre,
+                                @Param("direccion") String direccion,
+                                @Param("num_ruc") String num_ruc,
+                                @Param("telefono") String telefono);
 
 }
