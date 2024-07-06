@@ -26,7 +26,6 @@ public class CategoriaEliminar {
 
     @PostMapping("/eliminarCategoria")
     public String procesarFormulario(RedirectAttributes redirectAttrs, @RequestParam("txtId") int id) {
-        // Desvincular o eliminar productos asociados antes de eliminar la categoría
         categoriaRepository.desvincularProductosPorCategoriaId(id);
         categoriaRepository.eliminar(id);
 

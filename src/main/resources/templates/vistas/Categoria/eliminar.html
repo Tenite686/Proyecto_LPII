@@ -42,7 +42,6 @@
     <!-- Main Content -->
     <div class="container">
         <h1 class="mt-4">Categoría - Eliminar</h1>
-        <a href="buscarCategoria" class="btn btn-secondary mb-3">Retornar a la búsqueda de categorías</a>
         <hr>
         <form id="eliminarCategoriaForm" method="post" action="eliminarCategoria">
             <table class="table table-bordered">
@@ -56,6 +55,8 @@
                 </tr>
             </table>
             <button type="submit" class="btn btn-danger" id="btnEliminar">Eliminar Categoría</button>
+			<a href="buscarCategoria" class="btn btn-danger ml-2">Regresar</a>
+
         </form>
     </div>
 
@@ -66,26 +67,35 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-        // Función para mostrar SweetAlert y confirmar la eliminación
-        document.getElementById('eliminarCategoriaForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevenir el envío del formulario por defecto
+	<script>
+	    // Función para mostrar SweetAlert y confirmar la eliminación
+	    document.getElementById('eliminarCategoriaForm').addEventListener('submit', function(event) {
+	        event.preventDefault(); // Prevenir el envío del formulario por defecto
 
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "¡No podrás revertir esto!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, eliminarlo!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Si se confirma la eliminación, enviar el formulario
-                    this.submit();
-                }
-            });
-        });
+	        Swal.fire({
+	            title: '¿Estás seguro?',
+	            text: "¡No podrás revertir esto!",
+	            icon: 'warning',
+	            showCancelButton: true,
+	            confirmButtonColor: '#3085d6',
+	            cancelButtonColor: '#d33',
+	            confirmButtonText: 'Sí, eliminarlo!'
+	        }).then((result) => {
+	            if (result.isConfirmed) {
+	                // Si se confirma la eliminación, enviar el formulario
+	                Swal.fire(
+	                    'Eliminado!',
+	                    'La categoria ha sido eliminada correctamente.',
+	                    'success'
+	                );
+	                setTimeout(() => {
+	                    this.submit();
+	                }, 1500); // Espera 1.5 segundos antes de enviar el formulario
+	            }
+	        });
+	    });
+	</script>
+
     </script>
 </body>
 </html>
