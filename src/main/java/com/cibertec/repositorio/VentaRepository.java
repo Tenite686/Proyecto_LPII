@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +53,17 @@ public interface VentaRepository extends JpaRepository<Venta, Integer> {
     @Query("SELECT v.fecha FROM Venta v")
     List<Date> listarTodasLasFechas();
     boolean existsByCliente(Cliente cliente);
+    
+    @Query("SELECT v FROM Venta v " +
+            "WHERE (:id_cliente =-1 OR v.cliente.id_cliente = :id_cliente) " +
+            "AND (:id_producto =-1 OR v.producto.id_producto = :id_producto) " +
+            "AND (:fechaDesde IS NULL OR v.fecha >= :fechaDesde) " +
+            "AND (:fechaHasta IS NULL OR v.fecha <= :fechaHasta)")
+    List<Venta> listaCompleja(
+            @Param("id_cliente") Integer id_cliente,
+            @Param("id_producto") Integer id_producto,
+            @Param("fechaDesde") Date fechaDesde,
+            @Param("fechaHasta") Date fechaHasta);
 
 
 }
