@@ -56,6 +56,11 @@ public class ProductoConsultar {
         model.addAttribute("descripcion", descripcion);
         model.addAttribute("codigo", codigo);
         model.addAttribute("id_categoria", id_categoria);
+        model.addAttribute("precio", precio);
+        if (stock != -1) {
+            model.addAttribute("stock", stock);
+        }
+
 
         return "vistas/Producto/consultar";
     }

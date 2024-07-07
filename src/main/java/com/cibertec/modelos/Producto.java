@@ -83,6 +83,15 @@ public class Producto {
 		this.categoria = categoria;
 	}
 	
+	//Atributos para reporte	
+	public String getReporteCategoria() {
+	    if (categoria == null) {
+	        return "sin categoria";
+	    }
+	    return categoria.getNombre();
+	}
+
+		
 
     
 }

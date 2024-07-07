@@ -16,28 +16,22 @@
        .navbar {
            background-color: #007bff; /* Color azul */
        }
-
        .navbar-brand {
            color: #fff; /* Texto blanco */
            font-weight: bold;
        }
-
        .nav-item .nav-link {
            color: #fff !important; /* Texto blanco */
        }
-
        .dropdown-menu {
            background-color: #007bff; /* Fondo azul */
        }
-
        .dropdown-item {
            color: #fff !important; /* Texto blanco */
        }
-
        .dropdown-item:hover {
            background-color: #0056b3; /* Color de fondo al pasar el mouse */
        }
-
        /* Estilos generales */
        body {
            padding-top: 60px; /* Ajuste para la barra de navegación fija */
@@ -46,7 +40,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-		<a class="navbar-brand" href="/index">Home</a>
+	    <a class="navbar-brand" href="/index">Home</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -94,10 +88,10 @@
 
 	<!-- Contenido principal -->
 	<div class="container mt-4">
-	   <h1>Consulta de Productos</h1>
+	   <h1 class="mb-4">Consulta de Productos</h1>
 
 	   <!-- Formulario de búsqueda de productos -->
-	   <form th:action="@{/consultarProducto}" method="get" class="mb-4">
+	   <form th:action="@{/consultarProducto}" method="get">
 	       <div class="form-row">
 	           <div class="form-group col-md-4">
 	               <label for="descripcion">Descripción:</label>
@@ -128,9 +122,12 @@
 	               <label for="stock">Stock:</label>
 	               <input type="text" class="form-control" id="stock" name="stock" th:value="${stock}">
 	           </div>
-	           <div class="form-group col-md-4">
-	               <!-- Botón para enviar el formulario -->
-	               <button type="submit" class="btn btn-primary mt-4" style="margin-top: 32px;">Buscar Productos</button>
+	           <div class="form-group col-md-4 d-flex align-items-end">
+	               <!-- Botones de búsqueda y reporte -->
+	               <button type="submit" class="btn btn-primary mr-2">Buscar Productos</button>
+	               <a class="btn btn-info" th:href="@{/reporteProductoPdf(descripcion=${descripcion}, codigo=${codigo}, id_categoria=${id_categoria}, precio=${precio}, stock=${stock})}">
+	                   Generar PDF
+	               </a>
 	           </div>
 	       </div>
 	   </form>
@@ -143,19 +140,21 @@
 	               <tr>
 	                   <th>Código</th>
 	                   <th>Descripción</th>
-	                   <th>Categoría</th>
+	                   <th>Código Inventario</th>
 	                   <th>Precio</th>
 	                   <th>Stock</th>
+	                   <th>Categoría</th>
 	               </tr>
 	           </thead>
 	           <tbody>
 	               <!-- Iteración sobre la lista de productos -->
 	               <tr th:each="producto : ${productos}">
-					<td th:text="${producto.getId_producto()}"></td>
-					<td th:text="${producto.getDescripcion()}"></td>
-					<td th:text="${producto.getPrecio()}"></td>
-					<td th:text="${producto.getStock()}"></td>
-					<td th:text="${producto.getCategoria() != null ? producto.getCategoria().getNombre() : 'Sin categoría'}"></td>
+	                   <td th:text="${producto.id_producto}"></td>
+	                   <td th:text="${producto.descripcion}"></td>
+	                   <td th:text="${producto.codigo_inventario}"></td>
+	                   <td th:text="${producto.precio}"></td>
+	                   <td th:text="${producto.stock}"></td>
+	                   <td th:text="${producto.categoria != null ? producto.categoria.nombre : 'Sin categoría'}"></td>
 	               </tr>
 	           </tbody>
 	       </table>

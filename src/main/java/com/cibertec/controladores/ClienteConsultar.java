@@ -54,7 +54,7 @@ public class ClienteConsultar {
         return "vistas/cliente/consultar";
     }
 
-    @GetMapping("/reporteClientePdf")
+    @GetMapping("/reporteClientePDF")
     public void reportePDF(HttpServletRequest request,
                            HttpServletResponse response,
                            @RequestParam(name = "nombre", required = false, defaultValue = "") String nombre,
