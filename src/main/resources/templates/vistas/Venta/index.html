@@ -151,6 +151,7 @@
 					<td th:text="${venta.getProducto().getDescripcion()}"></td>
 					<td th:text="${venta.getCliente().getNombre()}"></td>
 					<td th:text="${#dates.format(venta.getFecha(), 'dd/MM/yyyy HH:mm')}"></td>
+					<td><a th:href="${'detalleVenta?id='+venta.getId_venta()}">Detalle</a></td>
 					<td><a th:href="${'eliminarVenta?id='+venta.getId_venta()}">Eliminar</a></td>
 				</tr>
 				<!-- Mensaje si no se encontraron ventas -->

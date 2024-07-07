@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cibertec.modelos.Cliente;
+import com.cibertec.modelos.Producto;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
