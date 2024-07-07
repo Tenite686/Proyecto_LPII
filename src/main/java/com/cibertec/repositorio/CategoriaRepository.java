@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.cibertec.modelos.Categoria;
@@ -44,4 +45,8 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
 
     @Query("SELECT c FROM Categoria c WHERE c.id_categoria = :id")
     Categoria buscarPorId(Integer id);
+    
+    @Query("select c from Categoria c where "
+            + "c.nombre like CONCAT(:nombre, '%')")
+    List<Categoria> listaCompleja(@Param("nombre") String nombre);
 }
