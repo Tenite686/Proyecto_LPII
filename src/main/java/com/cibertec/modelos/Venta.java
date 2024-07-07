@@ -2,6 +2,8 @@ package com.cibertec.modelos;
 
 import java.util.Date;
 
+import com.cibertec.util.FunctionUtil;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -69,4 +71,13 @@ public class Venta {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+	//Atributos para reporte	
+    public String getReporteProducto() {
+		return producto.getDescripcion();
+	}public String getReporteCliente() {
+		return cliente.getNombre();
+	}
+	public String getReporteFecha() {
+		return FunctionUtil.getFechaString(fecha);
+	}
 }
