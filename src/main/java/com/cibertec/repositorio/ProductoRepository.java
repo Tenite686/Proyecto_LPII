@@ -50,6 +50,21 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     
     @Query("SELECT COUNT(v) > 0 FROM Venta v WHERE v.producto.id = :id")
     boolean existsVentasByProductoId(@Param("id") int id);
+    
+        
+        @Query("select p from Producto p "
+                + "where p.descripcion like CONCAT(:descripcion, '%') "
+                + "and p.codigo_inventario like CONCAT(:codigo, '%') "
+                + "and (:id_categoria = -1 or p.categoria.id_categoria = :id_categoria) "
+                + "and (:precio is null or p.precio = :precio) "
+                + "and (:stock = -1 or p.stock = :stock)")
+        List<Producto> listaCompleja(
+                @Param("descripcion") String descripcion,
+                @Param("codigo") String codigo,
+                @Param("id_categoria") int id_categoria,
+                @Param("precio") Double precio,
+                @Param("stock") int stock);
+    
 
 
 }
