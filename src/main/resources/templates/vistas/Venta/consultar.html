@@ -1,169 +1,180 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Consulta de Ventas</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <style>
-        .navbar {
-            background-color: #007bff;
-        }
-        .navbar-brand {
-            color: #fff;
-            font-weight: bold;
-        }
-        .nav-item .nav-link {
-            color: #fff !important;
-        }
-        .dropdown-menu {
-            background-color: #007bff;
-        }
-        .dropdown-item {
-            color: #fff !important;
-        }
-        .dropdown-item:hover {
-            background-color: #0056b3;
-        }
-        body {
-            padding-top: 60px;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Consulta de Ventas</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<style>
+		.navbar {
+			background-color: #007bff;
+		}
+
+		.navbar-brand {
+			color: #fff;
+			font-weight: bold;
+		}
+
+		.nav-item .nav-link {
+			color: #fff !important;
+		}
+
+		.dropdown-menu {
+			background-color: #007bff;
+		}
+
+		.dropdown-item {
+			color: #fff !important;
+		}
+
+		.dropdown-item:hover {
+			background-color: #0056b3;
+		}
+
+		body {
+			padding-top: 60px;
+		}
+	</style>
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="/index">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Registros
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                    <a class="dropdown-item" href="agregarCliente">Cliente</a>
-                    <a class="dropdown-item" href="agregarVenta">Venta</a>
-                    <a class="dropdown-item" href="agregarCategoria">Categoría</a>
-                    <a class="dropdown-item" href="agregarProducto">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    CRUD
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
-                    <a class="dropdown-item" href="buscarVenta">Venta</a>
-                    <a class="dropdown-item" href="buscarCategoria">Categoría</a>
-                    <a class="dropdown-item" href="buscarProducto">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Consulta y Reporte 
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                    <a class="dropdown-item" href="consultarCliente">Cliente</a>
-                    <a class="dropdown-item" href="consultarVenta">Venta</a>
-                    <a class="dropdown-item" href="#">Categoría</a>
-                    <a class="dropdown-item" href="consultarProducto">Producto</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+		<a class="navbar-brand" href="/index">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registros
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+						<a class="dropdown-item" href="agregarCliente">Cliente</a>
+						<a class="dropdown-item" href="agregarVenta">Venta</a>
+						<a class="dropdown-item" href="agregarCategoria">Categoría</a>
+						<a class="dropdown-item" href="agregarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						CRUD
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+						<a class="dropdown-item" href="buscarCliente">Cliente</a>
+						<a class="dropdown-item" href="buscarVenta">Venta</a>
+						<a class="dropdown-item" href="buscarCategoria">Categoría</a>
+						<a class="dropdown-item" href="buscarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Consulta y Reporte
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+						<a class="dropdown-item" href="consultarCliente">Cliente</a>
+						<a class="dropdown-item" href="consultarVenta">Venta</a>
+						<a class="dropdown-item" href="#">Categoría</a>
+						<a class="dropdown-item" href="consultarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-<div class="container mt-4">
-    <h1 class="mb-4">Consulta de Ventas</h1>
+	<div class="container mt-4">
+		<h1 class="mb-4">Consulta de Ventas</h1>
 
-    <form th:action="@{/consultarVenta}" method="get">
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_cliente">Cliente:</label>
-                <select id="id_cliente" name="id_cliente" class="form-control">
-                    <option value="-1">Todos los clientes</option>
-                    <option th:each="cliente : ${clientes}"
-                            th:value="${cliente.id_cliente}"
-                            th:text="${cliente.nombre}"
-                            th:selected="${cliente.id_cliente} == ${id_cliente}"></option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="id_producto">Producto:</label>
-                <select id="id_producto" name="id_producto" class="form-control">
-                    <option value="-1">Todos los productos</option>
-                    <option th:each="producto : ${productos}"
-                            th:value="${producto.id_producto}"
-                            th:text="${producto.descripcion}"
-                            th:selected="${producto.id_producto} == ${id_producto}"></option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="fechaDesde">Fecha Desde:</label>
-                <input type="date" class="form-control" id="fechaDesde" name="fechaDesde" th:value="${fechaDesde}">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="fechaHasta">Fecha Hasta:</label>
-                <input type="date" class="form-control" id="fechaHasta" name="fechaHasta" th:value="${fechaHasta}">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-primary btn-block">Buscar</button>
-            </div>
-            <div class="form-group col-md-6">
-                <a class="btn btn-info btn-block" th:href="@{/reporteVentaPdf(id_cliente=${id_cliente}, id_producto=${id_producto}, fechaDesde=${fechaDesde}, fechaHasta=${fechaHasta})}">
-                    Generar PDF
-                </a>
-            </div>
-        </div>
-    </form>
+		<form th:action="@{/consultarVenta}" method="get">
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="id_cliente">Cliente:</label>
+					<select id="id_cliente" name="id_cliente" class="form-control">
+						<option value="-1">Todos los clientes</option>
+						<option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}"
+							th:text="${cliente.nombre}" th:selected="${cliente.id_cliente} == ${id_cliente}"></option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="id_producto">Producto:</label>
+					<select id="id_producto" name="id_producto" class="form-control">
+						<option value="-1">Todos los productos</option>
+						<option th:each="producto : ${productos}" th:value="${producto.id_producto}"
+							th:text="${producto.descripcion}" th:selected="${producto.id_producto} == ${id_producto}">
+						</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="fechaDesde">Fecha Desde:</label>
+					<input type="date" class="form-control" id="fechaDesde" name="fechaDesde" th:value="${fechaDesde}">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="fechaHasta">Fecha Hasta:</label>
+					<input type="date" class="form-control" id="fechaHasta" name="fechaHasta" th:value="${fechaHasta}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<button type="submit" class="btn btn-primary btn-block">Buscar</button>
+				</div>
+				<div class="form-group col-md-6">
+					<a class="btn btn-info btn-block"
+						th:href="@{/reporteVentaPdf(id_cliente=${id_cliente}, id_producto=${id_producto}, fechaDesde=${fechaDesde}, fechaHasta=${fechaHasta})}">
+						Generar PDF
+					</a>
+				</div>
+			</div>
+		</form>
 
-    <h2 class="mt-4">Resultados</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID Venta</th>
-                <th>Cliente</th>
-                <th>Producto</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="venta : ${ventas}">
-                <td th:text="${venta.id_venta}">1</td>
-                <td th:text="${venta.cliente.nombre}">Cliente</td>
-                <td th:text="${venta.producto.descripcion}">Producto</td>
-                <td th:text="${#dates.format(venta.getFecha(), 'dd/MM/yyyy')}"></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+		<h2 class="mt-4">Resultados</h2>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID Venta</th>
+					<th>Cliente</th>
+					<th>Producto</th>
+					<th>Fecha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="venta : ${ventas}">
+					<td th:text="${venta.id_venta}">1</td>
+					<td th:text="${venta.cliente.nombre}">Cliente</td>
+					<td th:text="${venta.producto.descripcion}">Producto</td>
+					<td th:text="${#dates.format(venta.getFecha(), 'dd/MM/yyyy')}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-<script>
-    function confirmarSalir() {
-        Swal.fire({
-            title: '¿Estás seguro que deseas salir?',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, salir',
-            cancelButtonText: 'Cancelar',
-            icon: 'warning'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/logout'; // Reemplaza con la URL de cierre de sesión
-            }
-        });
-    }
-</script>
+	<script>
+		function confirmarSalir() {
+			Swal.fire({
+				title: '¿Estás seguro que deseas salir?',
+				showCancelButton: true,
+				confirmButtonText: 'Sí, salir',
+				cancelButtonText: 'Cancelar',
+				icon: 'warning'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					window.location.href = 'iniciar-sesion'; // Redirige a la página de inicio de sesión
+				}
+			});
+		}
+	</script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

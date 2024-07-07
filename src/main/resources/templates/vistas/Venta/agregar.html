@@ -1,217 +1,239 @@
 <!DOCTYPE html>
 <html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Nueva Venta</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Nueva Venta</title>
 	<!-- Bootstrap CSS -->
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- SweetAlert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-	    <!-- Custom CSS para estilos personalizados -->
-	    <style>
-	        /* Estilos para la barra de navegación */
-	        .navbar {
-	            background-color: #007bff; /* Color azul */
-	        }
+	<!-- Custom CSS para estilos personalizados -->
+	<style>
+		/* Estilos para la barra de navegación */
+		.navbar {
+			background-color: #007bff;
+			/* Color azul */
+		}
 
-	        .navbar-brand {
-	            color: #fff; /* Texto blanco */
-	            font-weight: bold;
-	        }
+		.navbar-brand {
+			color: #fff;
+			/* Texto blanco */
+			font-weight: bold;
+		}
 
-	        .nav-item .nav-link {
-	            color: #fff !important; /* Texto blanco */
-	        }
+		.nav-item .nav-link {
+			color: #fff !important;
+			/* Texto blanco */
+		}
 
-	        .dropdown-menu {
-	            background-color: #007bff; /* Fondo azul */
-	        }
+		.dropdown-menu {
+			background-color: #007bff;
+			/* Fondo azul */
+		}
 
-	        .dropdown-item {
-	            color: #fff !important; /* Texto blanco */
-	        }
+		.dropdown-item {
+			color: #fff !important;
+			/* Texto blanco */
+		}
 
-	        .dropdown-item:hover {
-	            background-color: #0056b3; /* Color de fondo al pasar el mouse */
-	        }
+		.dropdown-item:hover {
+			background-color: #0056b3;
+			/* Color de fondo al pasar el mouse */
+		}
 
-	        /* Estilos generales */
-	        body {
-	            padding-top: 60px; /* Ajuste para la barra de navegación fija */
-	        }
-	    </style>
+		/* Estilos generales */
+		body {
+			padding-top: 60px;
+			/* Ajuste para la barra de navegación fija */
+		}
+	</style>
 </head>
+
 <body>
-<div class="container">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-		<a class="navbar-brand" href="/index">Home</a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	        <ul class="navbar-nav">
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Registros
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-	                    <a class="dropdown-item" href="agregarCliente">Cliente</a>
-	                    <a class="dropdown-item" href="agregarVenta">Venta</a>
-	                    <a class="dropdown-item" href="agregarCategoria">Categoría</a>
-	                    <a class="dropdown-item" href="agregarProducto">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    CRUD
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-	                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
-	                    <a class="dropdown-item" href="buscarVenta">Venta</a>
-	                    <a class="dropdown-item" href="buscarCategoria">Categoría</a>
-	                    <a class="dropdown-item" href="buscarProducto">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Consulta y Reporte 
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-	                    <a class="dropdown-item" href="#">Cliente</a>
-	                    <a class="dropdown-item" href="#">Venta</a>
-	                    <a class="dropdown-item" href="#">Categoría</a>
-	                    <a class="dropdown-item" href="#">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item">
-					<a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
-	            </li>
-	        </ul>
-	    </div>
-	</nav>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+			<a class="navbar-brand" href="/index">Home</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Registros
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+							<a class="dropdown-item" href="agregarCliente">Cliente</a>
+							<a class="dropdown-item" href="agregarVenta">Venta</a>
+							<a class="dropdown-item" href="agregarCategoria">Categoría</a>
+							<a class="dropdown-item" href="agregarProducto">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							CRUD
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+							<a class="dropdown-item" href="buscarCliente">Cliente</a>
+							<a class="dropdown-item" href="buscarVenta">Venta</a>
+							<a class="dropdown-item" href="buscarCategoria">Categoría</a>
+							<a class="dropdown-item" href="buscarProducto">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Consulta y Reporte
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+							<a class="dropdown-item" href="consultarCliente">Cliente</a>
+							<a class="dropdown-item" href="consultarVenta">Venta</a>
+							<a class="dropdown-item" href="#">Categoría</a>
+							<a class="dropdown-item" href="consultarProducto">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
-	<!-- Contenido principal -->	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-		<a class="navbar-brand" href="/index">Home</a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	        <ul class="navbar-nav">
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Registros
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-	                    <a class="dropdown-item" href="agregarCliente">Cliente</a>
-	                    <a class="dropdown-item" href="agregarVenta">Venta</a>
-	                    <a class="dropdown-item" href="agregarCategoria">Categoría</a>
-	                    <a class="dropdown-item" href="agregarProducto">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    CRUD
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-	                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
-	                    <a class="dropdown-item" href="buscarVenta">Venta</a>
-	                    <a class="dropdown-item" href="buscarCategoria">Categoría</a>
-	                    <a class="dropdown-item" href="buscarProducto">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Consulta y Reporte 
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-	                    <a class="dropdown-item" href="#">Cliente</a>
-	                    <a class="dropdown-item" href="#">Venta</a>
-	                    <a class="dropdown-item" href="#">Categoría</a>
-	                    <a class="dropdown-item" href="#">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
-	                    <a class="dropdown-item" href="#">Cliente</a>
-	                    <a class="dropdown-item" href="#">Venta</a>
-	                    <a class="dropdown-item" href="#">Categoría</a>
-	                    <a class="dropdown-item" href="#">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item">
-	                <a class="nav-link" href="#">Salir</a>
-	            </li>
-	        </ul>
-	    </div>
-	</nav>
-	<!-- Contenido principal -->
-    <h1 class="mt-5">Venta - Agregar</h1>
-    <hr>
-    <form method="post" action="agregarVenta">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="cmbProducto">PRODUCTO</label>
-                    <select class="form-control" id="cmbProducto" name="id_producto">
-                        <option th:each="producto : ${productos}" th:value="${producto.id_producto}" th:text="${producto.descripcion}"></option>
-                    </select>
-                </div>
-				<div class="form-group">
-				    <label for="cmbCliente">CLIENTE</label>
-				    <select class="form-control" id="cmbCliente" name="id_cliente">
-				        <option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}" th:text="${cliente.nombre}"></option>
-				    </select>
+		<!-- Contenido principal -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+			<a class="navbar-brand" href="/index">Home</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Registros
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+							<a class="dropdown-item" href="agregarCliente">Cliente</a>
+							<a class="dropdown-item" href="agregarVenta">Venta</a>
+							<a class="dropdown-item" href="agregarCategoria">Categoría</a>
+							<a class="dropdown-item" href="agregarProducto">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							CRUD
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+							<a class="dropdown-item" href="buscarCliente">Cliente</a>
+							<a class="dropdown-item" href="buscarVenta">Venta</a>
+							<a class="dropdown-item" href="buscarCategoria">Categoría</a>
+							<a class="dropdown-item" href="buscarProducto">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Consulta y Reporte
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+							<a class="dropdown-item" href="#">Cliente</a>
+							<a class="dropdown-item" href="#">Venta</a>
+							<a class="dropdown-item" href="#">Categoría</a>
+							<a class="dropdown-item" href="#">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+							<a class="dropdown-item" href="#">Cliente</a>
+							<a class="dropdown-item" href="#">Venta</a>
+							<a class="dropdown-item" href="#">Categoría</a>
+							<a class="dropdown-item" href="#">Producto</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Salir</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Contenido principal -->
+		<h1 class="mt-5">Venta - Agregar</h1>
+		<hr>
+		<form method="post" action="agregarVenta">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="cmbProducto">PRODUCTO</label>
+						<select class="form-control" id="cmbProducto" name="id_producto">
+							<option th:each="producto : ${productos}" th:value="${producto.id_producto}"
+								th:text="${producto.descripcion}"></option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="cmbCliente">CLIENTE</label>
+						<select class="form-control" id="cmbCliente" name="id_cliente">
+							<option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}"
+								th:text="${cliente.nombre}"></option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="txtFecha">FECHA</label>
+						<input type="date" class="form-control" id="txtFecha" name="fecha" required>
+					</div>
 				</div>
-                <div class="form-group">
-                    <label for="txtFecha">FECHA</label>
-                    <input type="date" class="form-control" id="txtFecha" name="fecha" required>
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Registrar Venta</button>
-		<a href="/index" class="btn btn-danger ml-2">Regresar</a>
-	</form>
-</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Registrar Venta</button>
+			<a href="/index" class="btn btn-danger ml-2">Regresar</a>
+		</form>
+	</div>
 
-<!-- jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script th:if="${exito}">
-    $(document).ready(function() {
-        Swal.fire({
-            icon: 'success',
-            title: '¡Venta registrada exitosamente!',
-            showConfirmButton: true,
-        });
-    });
-</script>
-<script>
-	    function confirmarSalir() {
-	        Swal.fire({
-	            title: '¿Estás seguro?',
-	            text: "¿Deseas salir de la sesión?",
-	            icon: 'warning',
-	            showCancelButton: true,
-	            confirmButtonColor: '#3085d6',
-	            cancelButtonColor: '#d33',
-	            confirmButtonText: 'Sí, salir',
-	            cancelButtonText: 'Cancelar'
-	        }).then((result) => {
-	            if (result.isConfirmed) {
-	                // Aquí redirige a la página de cierre de sesión o realiza la acción correspondiente
-	                window.location.href = 'iniciar-sesion'; // Redirige a la página de inicio de sesión
-	            }
-	        });
-	    }
+	<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script th:if="${exito}">
+		$(document).ready(function () {
+			Swal.fire({
+				icon: 'success',
+				title: '¡Venta registrada exitosamente!',
+				showConfirmButton: true,
+			});
+		});
 	</script>
-<!-- jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		function confirmarSalir() {
+			Swal.fire({
+				title: '¿Estás seguro?',
+				text: "¿Deseas salir de la sesión?",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Sí, salir',
+				cancelButtonText: 'Cancelar'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// Aquí redirige a la página de cierre de sesión o realiza la acción correspondiente
+					window.location.href = 'iniciar-sesion'; // Redirige a la página de inicio de sesión
+				}
+			});
+		}
+	</script>
+	<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

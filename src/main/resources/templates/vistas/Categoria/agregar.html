@@ -1,129 +1,144 @@
 <!DOCTYPE html>
 <html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Nuevas Categorías</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Nuevas Categorías</title>
 	<!-- Bootstrap CSS -->
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-		<!-- SweetAlert -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <!-- Custom CSS para estilos personalizados -->
-    <style>
-        /* Estilos para la barra de navegación */
-        .navbar {
-            background-color: #007bff; /* Color azul */
-        }
+	<!-- SweetAlert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<!-- Custom CSS para estilos personalizados -->
+	<style>
+		/* Estilos para la barra de navegación */
+		.navbar {
+			background-color: #007bff;
+			/* Color azul */
+		}
 
-        .navbar-brand {
-            color: #fff; /* Texto blanco */
-            font-weight: bold;
-        }
+		.navbar-brand {
+			color: #fff;
+			/* Texto blanco */
+			font-weight: bold;
+		}
 
-        .nav-item .nav-link {
-            color: #fff !important; /* Texto blanco */
-        }
+		.nav-item .nav-link {
+			color: #fff !important;
+			/* Texto blanco */
+		}
 
-        .dropdown-menu {
-            background-color: #007bff; /* Fondo azul */
-        }
+		.dropdown-menu {
+			background-color: #007bff;
+			/* Fondo azul */
+		}
 
-        .dropdown-item {
-            color: #fff !important; /* Texto blanco */
-        }
+		.dropdown-item {
+			color: #fff !important;
+			/* Texto blanco */
+		}
 
-        .dropdown-item:hover {
-            background-color: #0056b3; /* Color de fondo al pasar el mouse */
-        }
+		.dropdown-item:hover {
+			background-color: #0056b3;
+			/* Color de fondo al pasar el mouse */
+		}
 
-        /* Estilos generales */
-        body {
-            padding-top: 60px; /* Ajuste para la barra de navegación fija */
-        }
-    </style>
+		/* Estilos generales */
+		body {
+			padding-top: 60px;
+			/* Ajuste para la barra de navegación fija */
+		}
+	</style>
 </head>
+
 <body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-	    <a class="navbar-brand" href="/index">Home</a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	        <ul class="navbar-nav">
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Registros
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-	                    <a class="dropdown-item" href="agregarCliente">Cliente</a>
-	                    <a class="dropdown-item" href="agregarVenta">Venta</a>
-	                    <a class="dropdown-item" href="agregarCategoria">Categoría</a>
-	                    <a class="dropdown-item" href="agregarProducto">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    CRUD
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-	                    <a class="dropdown-item" href="buscarCliente">Cliente</a>
-	                    <a class="dropdown-item" href="buscarVenta">Venta</a>
-	                    <a class="dropdown-item" href="buscarCategoria">Categoría</a>
-	                    <a class="dropdown-item" href="buscarProducto">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Consulta y Reporte 
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-	                    <a class="dropdown-item" href="#">Cliente</a>
-	                    <a class="dropdown-item" href="#">Venta</a>
-	                    <a class="dropdown-item" href="#">Categoría</a>
-	                    <a class="dropdown-item" href="#">Producto</a>
-	                </div>
-	            </li>
-	            <li class="nav-item">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+		<a class="navbar-brand" href="/index">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registros
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+						<a class="dropdown-item" href="agregarCliente">Cliente</a>
+						<a class="dropdown-item" href="agregarVenta">Venta</a>
+						<a class="dropdown-item" href="agregarCategoria">Categoría</a>
+						<a class="dropdown-item" href="agregarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						CRUD
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+						<a class="dropdown-item" href="buscarCliente">Cliente</a>
+						<a class="dropdown-item" href="buscarVenta">Venta</a>
+						<a class="dropdown-item" href="buscarCategoria">Categoría</a>
+						<a class="dropdown-item" href="buscarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Consulta y Reporte
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+						<a class="dropdown-item" href="consultarCliente">Cliente</a>
+						<a class="dropdown-item" href="consultarVenta">Venta</a>
+						<a class="dropdown-item" href="#">Categoría</a>
+						<a class="dropdown-item" href="consultarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
-	            </li>
-	        </ul>
-	    </div>
+				</li>
+			</ul>
+		</div>
 	</nav>
 
 	<!-- Contenido principal -->
-<div class="container">
-    <h1 class="mt-5">Categoría - Agregar</h1>
-    <hr>
-    <form method="post" action="agregarCategoria">
-        <div class="row">
-            <div class="col-md-6">
-				<div class="form-group d-none">
-				    <label for="txtId">CÓDIGO</label>
-				    <input type="text" class="form-control" id="txtId" name="txtId" th:value="${categoria.id_categoria}" readonly>
+	<div class="container">
+		<h1 class="mt-5">Categoría - Agregar</h1>
+		<hr>
+		<form method="post" action="agregarCategoria">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group d-none">
+						<label for="txtId">CÓDIGO</label>
+						<input type="text" class="form-control" id="txtId" name="txtId"
+							th:value="${categoria.id_categoria}" readonly>
+					</div>
+					<div class="form-group">
+						<label for="txtNombre">NOMBRE</label>
+						<input type="text" class="form-control" id="txtNombre" name="txtNombre"
+							th:value="${categoria.nombre}">
+					</div>
 				</div>
-                <div class="form-group">
-                    <label for="txtNombre">NOMBRE</label>
-                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" th:value="${categoria.nombre}">
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-		<a href="/index" class="btn btn-danger ml-2">Regresar</a>
+			</div>
+			<button type="submit" class="btn btn-primary">Guardar</button>
+			<a href="/index" class="btn btn-danger ml-2">Regresar</a>
 		</form>
-</div>
+	</div>
 </body>
 <!-- jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script th:if="${exito}">
-    $(document).ready(function() {
-        Swal.fire({
-            icon: 'success',
-            title: '¡Categoria registrada exitosamente!',
-            showConfirmButton: true,
-        });
-    });
+	$(document).ready(function () {
+		Swal.fire({
+			icon: 'success',
+			title: '¡Categoria registrada exitosamente!',
+			showConfirmButton: true,
+		});
+	});
 </script>
 <script>
 	function confirmarSalir() {
