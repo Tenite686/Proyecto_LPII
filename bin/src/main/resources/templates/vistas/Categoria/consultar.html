@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Categorías</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        .container {
+            max-width: 800px;
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .btn-search,
+        .btn-pdf {
+            width: 100%;
+        }
+
+        .btn-pdf {
+            margin-top: 10px;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        /* Estilos para la barra de navegación */
+        .navbar {
+            background-color: #007bff;
+            /* Color azul */
+        }
+
+        .navbar-brand {
+            color: #fff;
+            /* Texto blanco */
+            font-weight: bold;
+        }
+
+        .nav-item .nav-link {
+            color: #fff !important;
+            /* Texto blanco */
+        }
+
+        .dropdown-menu {
+            background-color: #007bff;
+            /* Fondo azul */
+        }
+
+        .dropdown-item {
+            color: #fff !important;
+            /* Texto blanco */
+        }
+
+        .dropdown-item:hover {
+            background-color: #0056b3;
+            /* Color de fondo al pasar el mouse */
+        }
+
+        /* Estilos generales */
+        body {
+            padding-top: 60px;
+            /* Ajuste para la barra de navegación fija */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="/index">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Registros
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                        <a class="dropdown-item" href="agregarCliente">Cliente</a>
+                        <a class="dropdown-item" href="agregarVenta">Venta</a>
+                        <a class="dropdown-item" href="agregarCategoria">Categoría</a>
+                        <a class="dropdown-item" href="agregarProducto">Producto</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CRUD
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                        <a class="dropdown-item" href="buscarCliente">Cliente</a>
+                        <a class="dropdown-item" href="buscarVenta">Venta</a>
+                        <a class="dropdown-item" href="buscarCategoria">Categoría</a>
+                        <a class="dropdown-item" href="buscarProducto">Producto</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consulta y Reporte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <a class="dropdown-item" href="consultarCliente">Cliente</a>
+                        <a class="dropdown-item" href="consultarVenta">Venta</a>
+                        <a class="dropdown-item" href="consultarCategoria">Categoría</a>
+                        <a class="dropdown-item" href="consultarProducto">Producto</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        <h2 class="mb-4">Consulta de Categorías</h2>
+
+        <!-- Formulario de búsqueda -->
+        <form th:action="@{/consultarCategoria}" method="get" class="mb-4">
+            <div class="form-row align-items-end">
+                <div class="form-group col-md-6">
+                    <label for="inputNombre">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre" name="nombre" placeholder="Nombre"
+                        th:value="${nombre}">
+                </div>
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-primary btn-search">Buscar</button>
+                </div>
+                <div class="form-group col-md-3">
+                    <a class="btn btn-info btn-pdf"
+                        th:href="@{/reporteCategoriaPdf(nombre=${nombre})}">PDF</a>
+                </div>
+            </div>
+        </form>
+
+        <!-- Tabla de resultados -->
+        <div th:if="${categorias}">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.id_categoria}"></td>
+                        <td th:text="${categoria.nombre}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${categorias.size() == 0}">
+            <p class="text-muted">No se encontraron categorías con los criterios proporcionados.</p>
+        </div>
+    </div>
+
+
+	<!-- Bootstrap JS (jQuery is required) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-q5QCrhDHUaBHGihz3GBpYynvG8R/1Cj2UZIFqFRb7ib9BI5U4N3p5hTG9K9I8fiz"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+hoF+1hPG02nU8Zr7Lq+8ATtLVhbcJ66TfU"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		function confirmarSalir() {
+			Swal.fire({
+				title: '¿Estás seguro?',
+				text: "¿Deseas salir de la sesión?",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Sí, salir',
+				cancelButtonText: 'Cancelar'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					window.location.href = 'iniciar-sesion'; // Redirige a la página de inicio de sesión
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

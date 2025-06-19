@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Eliminar Cliente</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- SweetAlert CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.css">
+	<!-- Custom CSS for personalized styles -->
+	<style>
+		.navbar {
+			background-color: #007bff;
+			/* Blue color */
+		}
+
+		.navbar-brand,
+		.nav-item .nav-link,
+		.dropdown-item {
+			color: #fff !important;
+			/* White text */
+		}
+
+		.dropdown-menu {
+			background-color: #007bff;
+			/* Blue background */
+		}
+
+		.dropdown-item:hover {
+			background-color: #0056b3;
+			/* Background color on hover */
+		}
+
+		body {
+			padding-top: 60px;
+			/* Adjustment for fixed navbar */
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+		<a class="navbar-brand" href="/index">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registros
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+						<a class="dropdown-item" href="agregarCliente">Cliente</a>
+						<a class="dropdown-item" href="agregarVenta">Venta</a>
+						<a class="dropdown-item" href="agregarCategoria">Categoría</a>
+						<a class="dropdown-item" href="agregarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						CRUD
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+						<a class="dropdown-item" href="buscarCliente">Cliente</a>
+						<a class="dropdown-item" href="buscarVenta">Venta</a>
+						<a class="dropdown-item" href="buscarCategoria">Categoría</a>
+						<a class="dropdown-item" href="buscarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Consulta y Reporte
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+						<a class="dropdown-item" href="consultarCliente">Cliente</a>
+						<a class="dropdown-item" href="consultarVenta">Venta</a>
+						<a class="dropdown-item" href="consultarCategoria">Categoría</a>
+						<a class="dropdown-item" href="consultarProducto">Producto</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="confirmarSalir()">Salir</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!-- Main Content -->
+	<div class="container">
+		<h1 class="mt-4">Cliente - Eliminar</h1>
+		<hr>
+		<form id="eliminarClienteForm">
+			<table class="table table-bordered">
+				<tr>
+					<td><label for="txtId">ID Cliente</label></td>
+					<td><input type="text" id="txtId" class="form-control" name="id" th:value="${cliente.id_cliente}"
+							readonly></td>
+				</tr>
+				<tr>
+					<td><label for="txtNombre">Nombre</label></td>
+					<td><input type="text" id="txtNombre" class="form-control" name="nombre"
+							th:value="${cliente.nombre}" readonly></td>
+				</tr>
+				<tr>
+					<td><label for="txtNumRuc">Número RUC</label></td>
+					<td><input type="text" id="txtNumRuc" class="form-control" name="numRuc"
+							th:value="${cliente.num_ruc}" readonly></td>
+				</tr>
+				<tr>
+					<td><label for="txtDireccion">Dirección</label></td>
+					<td><input type="text" id="txtDireccion" class="form-control" name="direccion"
+							th:value="${cliente.direccion}" readonly></td>
+				</tr>
+				<tr>
+					<td><label for="txtTelefono">Teléfono</label></td>
+					<td><input type="text" id="txtTelefono" class="form-control" name="telefono"
+							th:value="${cliente.telefono}" readonly></td>
+				</tr>
+			</table>
+			<button type="button" class="btn btn-danger" id="btnEliminar">Eliminar Cliente</button>
+			<a href="buscarCliente" class="btn btn-danger ml-2">Regresar</a>
+
+		</form>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- SweetAlert Library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.js"></script>
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+	document.getElementById('btnEliminar').addEventListener('click', function (event) {
+		event.preventDefault(); // Prevent the default form submission
+		Swal.fire({
+			title: '¿Está seguro?',
+			text: '¿Desea eliminar este cliente?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Sí, eliminar!',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// Obtener el ID del cliente
+				const id = document.getElementById('txtId').value;
+
+				// Enviar una solicitud POST al servidor para eliminar el cliente
+				fetch('/eliminarCliente?id=' + id, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+					.then(response => response.json())
+					.then(data => {
+						if (data.exito) {
+							Swal.fire({
+								icon: 'success',
+								title: 'Cliente eliminado',
+								text: 'El cliente se ha eliminado correctamente.',
+								onClose: () => {
+									window.location.href = "buscarCliente"; // Redirigir a la página de índice
+								}
+							});
+						} else {
+							Swal.fire({
+								icon: 'error',
+								title: 'No se puede eliminar',
+								text: data.mensaje,
+								confirmButtonText: 'Entendido'
+							});
+						}
+					})
+					.catch(error => {
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: 'Hubo un problema al intentar eliminar el cliente.',
+							confirmButtonText: 'Entendido'
+						});
+					});
+			}
+		});
+	});
+</script>
+<script>
+	function confirmarSalir() {
+		Swal.fire({
+			title: '¿Estás seguro?',
+			text: "¿Deseas salir de la sesión?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Sí, salir',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = 'iniciar-sesion'; // Redirige a la página de inicio de sesión
+			}
+		});
+	}
+</script>
+
+</html>

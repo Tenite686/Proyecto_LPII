@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargando...</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 150px;
+            font-family: Arial, sans-serif;
+        }
+
+        .texto {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .barra {
+            width: 300px;
+            height: 20px;
+            background-color: #eee;
+            border-radius: 10px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+		.progreso {
+		  height: 100%;
+		  width: 100%;
+		  background: repeating-linear-gradient(
+		    45deg,
+		    #ff69b4,
+		    #ff69b4 10px,
+		    #fff 10px,
+		    #fff 20px
+		  );
+		  animation: moverRayas 1s linear infinite;
+		}
+
+
+		@keyframes moverRayas {
+		  0% { background-position: 0 0; }
+		  100% { background-position: 40px 0; }
+		}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+		<img src="/img/kitty.gif" alt="Hello Kitty" style="width: 150px; margin-bottom: 20px;">
+        <div class="texto">Iniciando sesión, por favor espera...</div>
+		
+        <div class="barra">
+            <div class="progreso"></div>
+        </div>
+    </div>
+
+    <script>
+        // Redirige automáticamente después de 3 segundos
+        setTimeout(function() {
+            window.location.href = '/index'; // Cambia esto a tu ruta principal
+        }, 3000);
+    </script>
+</body>
+</html>
