@@ -36,10 +36,7 @@ public class Usuario {
 	public String getContraseña() {
 		return contraseña;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setClave(String clave) {
+		this.contraseña = clave;
 	}
-	 
-	
-
 }

@@ -74,7 +74,8 @@ public class VentaConsultar {
                            @RequestParam(name = "fechaDesde", required = false) String fechaDesde,
                            @RequestParam(name = "fechaHasta", required = false) String fechaHasta) {
 
-        log.info(">>> Parámetros recibidos - ID Cliente: " + id_cliente + ", ID Producto: " + id_producto + ", Fecha Desde: " + fechaDesde + ", Fecha Hasta: " + fechaHasta);
+       
+		log.info(">>> Parámetros recibidos - ID Cliente: " + id_cliente + ", ID Producto: " + id_producto + ", Fecha Desde: " + fechaDesde + ", Fecha Hasta: " + fechaHasta);
 
         try {
             List<Venta> lstVentas = ventaRepository.listaCompleja(id_cliente, id_producto, parseFecha(fechaDesde), parseFecha(fechaHasta));

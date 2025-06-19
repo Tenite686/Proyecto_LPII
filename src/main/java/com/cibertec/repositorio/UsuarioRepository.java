@@ -17,4 +17,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Modifying
     @Query(value = "INSERT INTO USUARIO (nombre_usuario, contraseña) VALUES (:nombre_usuario, :contraseña)", nativeQuery = true)
     void registrarUsuario(String nombre_usuario, String contraseña);
+    
+    @Query("SELECT COUNT(u) > 0 FROM Usuario u where u.nombre_usuario = :nombre_usuario")
+    boolean existeUsuarioPorNombre(String nombre_usuario);
 }
