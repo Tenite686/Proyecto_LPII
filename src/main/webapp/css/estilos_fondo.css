@@ -1,0 +1,22 @@
+/* src/main/webapp/css/estilos_fondo.css */
+
+body {
+    /* La ruta de la imagen es relativa al archivo CSS, o absoluta desde la raíz webapp */
+    /* Si tu CSS está en webapp/css/, y tu imagen en webapp/img/ */
+    background-image: url('../img/fondo.jpg'); /* '..' para subir de 'css' a 'webapp', luego entrar a 'img' */
+    background-size: cover;          /* La imagen cubre todo el fondo, recortando si es necesario */
+    background-repeat: no-repeat;    /* Evita que la imagen se repita */
+    background-attachment: fixed;    /* La imagen se mantiene fija al hacer scroll */
+    background-position: center center; /* Centra la imagen en el fondo */
+    background-color: #f0f0f0;       /* Un color de respaldo si la imagen no carga */
+}
+
+/* Opcional: Estilos para que el contenido sea legible sobre el fondo */
+.container {
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco semi-transparente para el contenido */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
