@@ -102,6 +102,6 @@ public class ClienteConsultar {
             // Manejo de errores aquí, por ejemplo, redirigir o mostrar un mensaje de error
         }
     }
-
+    
     
 }
